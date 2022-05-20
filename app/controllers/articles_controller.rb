@@ -7,6 +7,10 @@ class ArticlesController < ApplicationController
 
     end
 
+    def index
+        @articles = Article.all
+    end
+
     def create
         
         @article = Article.new(article_params)
@@ -23,8 +27,27 @@ class ArticlesController < ApplicationController
     end
 
     def show
-        
+
         @article = Article.find(params[:id])
+
+    end
+
+    def edit
+
+        @article = Article.find(params[:id])
+
+    
+    end
+
+    def update
+
+        @article = Article.find(params[:id])
+        if @article.update(article_params)
+            flash[:notice] = "article updated"
+            redirect_to article_path(@article)
+        else
+            render 'Edit'
+        end
 
     end
 
@@ -33,5 +56,7 @@ class ArticlesController < ApplicationController
     def article_params
         params.require(:article).permit(:title, :description)
     end
+
+   
     
 end
