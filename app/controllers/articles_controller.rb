@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
             flash[:notice] = "article updated"
             redirect_to article_path(@article)
         else
-            render 'Edit'
+            render 'edit'
         end
 
     end
@@ -64,7 +64,5 @@ class ArticlesController < ApplicationController
     def article_params
         params.require(:article).permit(:title, :description)
     end
-
-   
     
 end
