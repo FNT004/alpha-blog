@@ -1,9 +1,12 @@
 class ArticlesController < ApplicationController
-    skip_before_action :verify_authenticity_token
+    skip_before_action :authenticate_user!, only: [:index, :show]
+    before_action :correct_user, only: [:edit, :update, :destroy]
+    
     
     def new
 
-        @article = Article.new
+       # @article = Article.new
+       @article = current_user.articles.build
 
     end
 
@@ -13,7 +16,8 @@ class ArticlesController < ApplicationController
 
     def create
         
-        @article = Article.new(article_params)
+        #@article = Article.new(article_params)
+        @article = currect_user.articles.build(article_params)
 
         if @article.save
             
@@ -59,10 +63,15 @@ class ArticlesController < ApplicationController
 
     end
 
+    def correct_user   
+        @article = current_user.articles.find_by(id: params[:id])
+        redirect_to articles_path, notice: "Not Authorised " if @article.nil?
+    end
+
     private
 
     def article_params
-        params.require(:article).permit(:title, :description)
+        params.require(:article).permit(:title, :description, :user_id)
     end
     
 end

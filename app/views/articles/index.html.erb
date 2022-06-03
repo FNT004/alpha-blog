@@ -1,18 +1,18 @@
-<h1> Listing all articles </h1>
-<%= link_to "Create new article", new_article_path %>
-<table>
-    <tr>
-        <th>Title </th>
-        <th>Description</th>
-    </tr>
-    <% @articles.each do |article| %>
-    <tr>
-        <td> <%= article.title %> </td>
-        <td> <%= article.description %> </td>
-        <td> <%= link_to "Edit", edit_article_path(article) %> </td>
-        <td> <%= link_to "Show", article_path(article) %> </td>
-        <td> <%= link_to "Delete", article_path(article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> </td>
 
-    </tr>
+    <% @articles.each do |article| %>
+    <div class= "display_a">
+
+         <h1 class="display-4"><%= article.title %></h1>
+         <h5 class="display-8"> Author: <%= article.user.email %> </h2>
+         <p class="lead_c"><%= article.description %> </p>
+           <div class="btn-group">
+              
+               <%= link_to "Show", article_path(article), class: "btn btn-primary btn-sm px-2" %> 
+                <% if article.user == current_user%>
+                <%= link_to "Edit", edit_article_path(article), class: "btn btn-primary btn-sm px-2"%> 
+               <%= button_to "Delete", article_path(article) , class: "btn btn-danger btn-sm px-2", method: :delete, onclick: "return confirmDestroy('Are you sure want destroy this post?')" %>
+                <%end%>    
+           </div> 
+    </div> 
     <% end %>
-    </table>
+   
