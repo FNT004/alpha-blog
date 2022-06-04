@@ -1,0 +1,8 @@
+{
+  "name": "alpha-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:FNT004/alpha-blog.git",
+  "author": "FNT004 <fnabi9@gmail.com>",
+  "license": "MIT"
+}
