@@ -9,10 +9,10 @@
          <p class="lead_c"><%= article.description %> </p>
            <div class="btn-group">
               
-               <%= link_to "Show", article_path(article), class: "btn btn-primary btn-sm px-2" %> 
+               <%= link_to "Show", article_path(article), class: "btn btn-primary btn-sm px-2 mx-2 my-2" %> 
                 <% if article.user == current_user%>
-                <%= link_to "Edit", edit_article_path(article), class: "btn btn-primary btn-sm px-2"%> 
-               <%= button_to "Delete", article_path(article) , class: "btn btn-danger btn-sm px-2", method: :delete, onclick: "return confirmDestroy('Are you sure want destroy this post?')" %>
+                <%= link_to "Edit", edit_article_path(article), class: "btn btn-primary btn-sm px-2 mx-2 my-2"%> 
+               <%= button_to "Delete", article_path(article) , class: "btn btn-danger btn-sm px-2 mx-2 my-2", method: :delete, onclick: "return confirmDestroy('Are you sure want destroy this post?')" %>
                 <%end%>    
            </div> 
     </div> 
