@@ -4,10 +4,11 @@
         <div class= "display_article">
             <h1 class="display-4"><%= @article.title %></h1>
             <p class="lead_c"><%= @article.description %> </p>
-        </div>
+        
             
-</div>
     <div class="btn-group">
-            <%= link_to "Edit this article", edit_article_path(@article),class: "btn btn-primary btn-sm px-2" %> |
+            <%= link_to "Edit this article", edit_article_path(@article),class: "btn btn-primary btn-sm px-2" %> 
             <%= link_to "Back to listing", articles_path, class: "btn btn-primary btn-sm px-2" %>
     </div>
+    </div>
+</div>
