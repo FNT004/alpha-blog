@@ -1,8 +1,9 @@
 
 <div class = "display_form">
+
 <% if @article.errors.any? %>
         <% @article.errors.full_messages.each do |msg| %>
-        <ul> <li> <%= msg %> </li> </ul>
+                <ul> <li> <%= msg %> </li> </ul>
         <% end %>
     <%end%>
  
